@@ -48,13 +48,28 @@ class RandoController extends Controller
         // output the $errors object form data to the page
         //dd($errors->all());
         //display errors
-        Debugbar::error('Error!');
-        Debugbar::addMessage('Another message', 'mylabel');
+        //Debugbar::error('Error!');
         if($validator->passes()) {
+            $data = $request->all();
+            $num_rnd_users = $data['num_rnd_users'];
             // use the factory to create a Faker\Generator instance
             $faker = FakerFactory::create();
-            \Debugbar::info($faker->name);
+            Debugbar::addMessage('Faker Name:', $faker->name);
+            Debugbar::addMessage('Faker Address:', $faker->address);
+            //dd($faker->name);
             //return Redirect::to('rando')->withInput();
+            $rando_users = array();
+            for ($i=0; $i < $num_rnd_users; $i++) {
+                $full_name = $faker->name;
+                $address = $faker->address;
+                echo $full_name, "\n";
+                $rando_users[] = array(
+                    'full_name' => $full_name,
+                    'address' => $address,
+                );
+            }
+            dd($rando_users);
+            return 'faker info';
         } else {
             $errors = $validator->errors();
 
