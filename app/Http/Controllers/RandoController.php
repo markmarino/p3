@@ -18,8 +18,7 @@ class RandoController extends Controller
 {
     public function getIndex()
     {
-        Debugbar::error('Error!');
-        return view('rando.index');
+        return view('rando.index'); // i.e. rando/index.blade.php
     }
 
     public function postIndex(Request $request)
@@ -39,16 +38,6 @@ class RandoController extends Controller
         );
         $validator = Validator::make($input, $rules, $messages);
 
-        /*
-        if ( $validator->fails() ) {
-            $errors = $validator->messages();
-        }
-        */
-
-        // output the $errors object form data to the page
-        //dd($errors->all());
-        //display errors
-        //Debugbar::error('Error!');
         if($validator->passes()) {
             $data = $request->all();
             $num_rnd_users = $data['num_rnd_users'];
@@ -56,6 +45,15 @@ class RandoController extends Controller
             $faker = FakerFactory::create();
             Debugbar::addMessage('Faker Name:', $faker->name);
             Debugbar::addMessage('Faker Address:', $faker->address);
+            Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
+            Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
+            if ($faker->boolean(50)) {
+                $coin_toss = "Heads";
+            } else {
+                //false
+                $coin_toss = "Tails";
+            }
+            Debugbar::addMessage('Random Coin Toss:', $coin_toss);
             //dd($faker->name);
             //return Redirect::to('rando')->withInput();
             $rando_users = array();
@@ -68,41 +66,18 @@ class RandoController extends Controller
                     'address' => $address,
                 );
             }
-            dd($rando_users);
+            //dd($rando_users);
             return 'faker info';
         } else {
+
             $errors = $validator->errors();
+            // output the $errors object form data to the page
+            //dd($errors->all());
 
             return Redirect::to('rando')
                 ->withInput()
                 ->withErrors($errors);
         }
-
-        /*
-        if ( ! empty( $errors ) ) {
-
-            foreach ( $errors->all() as $error ) {
-                    echo '<div class="error">' . $error . '</div>';
-            }
-
-            return 'Process the rando index';
-        } else {
-            // require the Faker autoloader
-            //require_once '/path/to/Faker/src/autoload.php';
-
-            // use the factory to create a Faker\Generator instance
-            $faker = FakerFactory::create();
-
-            // generate data by accessing properties
-            echo $faker->name.'<br>';
-        }
-        */
-
-        /* simple validation method, replaced by more robust validation above
-        $this->validate($request, [
-            'num_rnd_users' => 'required|digits_between:1,3',
-        ]);
-        */
 
         // output the request object form data to the page
         //dd($request->all());

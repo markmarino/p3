@@ -16,18 +16,24 @@ such as a page specific stylesheets.
 @stop
 
 @section('header')
-        <img
-        src='http://p3.loc/images/Lorem_Ipsum_Generator_Sm.png'
-        style='width:594px'
-        alt='Lorem Ipsum Generator'>
+    <img src='http://p3.loc/images/Lorem_Ipsum_Generator_Sm.png' style='width:594px' alt='Lorem Ipsum Generator'>
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/rando">Random User Generator</a></li>
+      <li class="active">Lorem Ipsum Generator</li>
+    </ol>
 @stop
 
 
 @section('content')
+    <div class="container">
         <h1>Generate Ipsum Lorem Text</h1>
         <form method='POST' action='/lorem'>
-            <input type='hidden' name='_token' value='{{csrf_token()}}'>
-            Number of Paragraphs: <input type='text' name='num_paragraphs' value='{{old('num_paragraphs')}}'>
+            <div class="form-group">
+                <input type='hidden' name='_token' value='{{csrf_token()}}'>
+                <label for="num_paragraphs">Number of Paragraphs</label>
+                <input type='text' class="form-control" id="num_paragraphs" name='num_paragraphs' value='{{old('num_paragraphs')}}'>
+            </div>
             @if(count($errors) > 0)
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -35,8 +41,9 @@ such as a page specific stylesheets.
                     @endforeach
                 </ul>
             @endif
-            <input type='submit' value='Generate Text'>
+            <button type="submit" class="btn btn-default">Generate</button>
         </form>
+    </div>
 @stop
 
 
