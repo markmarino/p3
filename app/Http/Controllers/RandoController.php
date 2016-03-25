@@ -90,6 +90,7 @@ class RandoController extends Controller
                     'phone' => $phone,
                     'email' => $email,
                     'kananame' => $kananame,
+                    'country' => $country,
                 );
             }
             //dd($rando_users);

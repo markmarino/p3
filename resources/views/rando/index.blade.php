@@ -30,11 +30,8 @@ such as a page specific stylesheets.
         <form method='POST' action='/rando'>
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
-
                 <label for="num_rnd_users">Number of Random Users</label>
                 <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ $input['num_rnd_users'] or old('num_rnd_users') }}'>
-
-
             </div>
             @if(count($errors) > 0)
                 <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p></div>
@@ -42,15 +39,15 @@ such as a page specific stylesheets.
 
             <h3>Choose a country:</h3>
             <div class="radio-inline">
-              <label class>
-                <input type="radio" name="country_option" id="country_option1" value="united_states" checked>
+              <label>
+                <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')=='united_states') checked @endif >
                 United States
               </label>
             </div>
 
             <div class="radio-inline">
               <label>
-                <input type="radio" name="country_option" id="country_option2" value="japan">
+                <input type="radio" name="country_option" id="country_option2" value="japan" @if(old('country_option')=='japan') checked @endif>
                 Japan
               </label>
             </div>
