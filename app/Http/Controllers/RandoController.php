@@ -50,17 +50,18 @@ class RandoController extends Controller
             $num_rnd_users = $data['num_rnd_users'];
             // use the factory to create a Faker\Generator instance
             $faker = FakerFactory::create();
-            //Debugbar::addMessage('Faker Name:', $faker->name);
-            //Debugbar::addMessage('Faker Address:', $faker->address);
             //Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
             //Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
+            /*
             if ($faker->boolean(50)) {
                 $coin_toss = "Heads";
             } else {
                 //false
                 $coin_toss = "Tails";
             }
-            //Debugbar::addMessage('Random Coin Toss:', $coin_toss);
+            Debugbar::addMessage('Random Coin Toss:', $coin_toss);
+            */
+
             //dd($faker->name);
             //return Redirect::to('rando')->withInput();
             $rando_users = array();
@@ -78,7 +79,12 @@ class RandoController extends Controller
                 );
             }
             //dd($rando_users);
-            return view('rando.postindex')->with(['rando_users' => $rando_users]); // /p3/resources/views/rando/postindex.blade.php
+            //return view('rando.postindex')->with(['rando_users' => $rando_users]); // /p3/resources/views/rando/postindex.blade.php
+            //return view('rando', ['rando_users' => $rando_users, 'todays_date' => $todays_date, 'otherstuff' => $otherstuff]);
+            //return view('rando.index', ['rando_users' => $rando_users]);
+            //return view('rando.index')->with('rando_users',$rando_users);
+            $input = $request->all();
+            return view('rando.index', ['rando_users' => $rando_users, 'input' => $input]);
         } else {
             // validation failed, redirect to the rando view and pass the errors array for display
             $errors = $validator->errors();

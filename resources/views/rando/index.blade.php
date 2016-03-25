@@ -58,6 +58,23 @@ such as a page specific stylesheets.
             <button type="submit" class="btn btn-primary">Generate</button>
         </form>
         <br><br><br>
+
+        @if(is_null($rando_users))
+            <p>No data received.</p>
+        @else
+
+            <div class="container">
+                <h1>Random User List</h1>
+                <table class="table table-striped">
+                    <tr><th>Name</th><th>Phone Number</th><th>E-mail Address</th><th>Street Address</th></tr>
+                    @foreach($rando_users as $rando_user)
+                        <tr><td>{{ $rando_user['full_name'] }}</td><td>{{ $rando_user['phone'] }}</td><td>{{ $rando_user['email'] }}</td><td>{{ $rando_user['address'] }}</td></tr>
+                    @endforeach
+                </table>
+            </div>
+
+        @endif
+
     </div>
 @stop
 
