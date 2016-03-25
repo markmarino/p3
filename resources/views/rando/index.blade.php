@@ -26,13 +26,13 @@ such as a page specific stylesheets.
 
 @section('content')
     <div class="container">
-        <h1>Generate Random Users</h1>
+        <h1>Generate Random Users:</h1>
         <form method='POST' action='/rando'>
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
 
                 <label for="num_rnd_users">Number of Random Users</label>
-                <input type='text' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{old('num_rnd_users')}}'>
+                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{old('num_rnd_users')}}'>
 
             </div>
             @if(count($errors) > 0)
@@ -40,7 +40,22 @@ such as a page specific stylesheets.
                     <p>{{ $errors->first('num_rnd_users') }}</p>
                 </div>
             @endif
-            <button type="submit" class="btn btn-default">Generate</button>
+            <h3>Choose a country:</h3>
+            <div class="radio-inline">
+              <label class>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                United States
+              </label>
+            </div>
+
+            <div class="radio-inline">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Japan
+              </label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Generate</button>
         </form>
         <br><br><br>
     </div>
