@@ -32,7 +32,7 @@ such as a page specific stylesheets.
             <div class="form-group">
 
                 <label for="num_rnd_users">Number of Random Users</label>
-                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{old('num_rnd_users')}}'>
+                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' @if(count($errors) > 0) value='{{old('num_rnd_users')}}' @else value='{{ $input['num_rnd_users'] or '' }}' @endif>
 
             </div>
             @if(count($errors) > 0)
@@ -59,11 +59,8 @@ such as a page specific stylesheets.
         </form>
         <br><br><br>
 
-        @if(is_null($rando_users))
-            <p>No data received.</p>
-        @else
-
-            <div class="container">
+        @if(isset($rando_users))
+                <div class="container">
                 <h1>Random User List</h1>
                 <table class="table table-striped">
                     <tr><th>Name</th><th>Phone Number</th><th>E-mail Address</th><th>Street Address</th></tr>
@@ -72,7 +69,6 @@ such as a page specific stylesheets.
                     @endforeach
                 </table>
             </div>
-
         @endif
 
     </div>
