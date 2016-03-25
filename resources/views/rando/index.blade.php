@@ -32,25 +32,25 @@ such as a page specific stylesheets.
             <div class="form-group">
 
                 <label for="num_rnd_users">Number of Random Users</label>
-                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' @if(count($errors) > 0) value='{{old('num_rnd_users')}}' @else value='{{ $input['num_rnd_users'] or '' }}' @endif>
+                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ $input['num_rnd_users'] or old('num_rnd_users') }}'>
+
 
             </div>
             @if(count($errors) > 0)
-                <div class='errors'>
-                    <p>{{ $errors->first('num_rnd_users') }}</p>
-                </div>
+                <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p></div>
             @endif
+
             <h3>Choose a country:</h3>
             <div class="radio-inline">
               <label class>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                <input type="radio" name="country_option" id="country_option1" value="united_states" checked>
                 United States
               </label>
             </div>
 
             <div class="radio-inline">
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="country_option" id="country_option2" value="japan">
                 Japan
               </label>
             </div>

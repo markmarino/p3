@@ -48,8 +48,16 @@ class RandoController extends Controller
             // grab the $request object which contains all the form data
             $data = $request->all();
             $num_rnd_users = $data['num_rnd_users'];
+            $country = $data['country_option'];
+            Debugbar::addMessage('$country:', $country);
+            // dd($data);
             // use the factory to create a Faker\Generator instance
-            $faker = FakerFactory::create();
+            if ($country == 'japan') {
+                $faker = FakerFactory::create('ja_JP');
+            } else {
+                $faker = FakerFactory::create();
+            }
+
             //Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
             //Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
             /*
@@ -70,12 +78,18 @@ class RandoController extends Controller
                 $address = $faker->address;
                 $phone = $faker->phoneNumber;
                 $email = $faker->email;
-                //echo $full_name . "\n";
+                if ($country == 'japan') {
+                    $kananame = $faker->kanaName;
+                    //Debugbar::addMessage('Kana Name:', $kananame);
+                } else {
+                    $kananame = "";
+                }
                 $rando_users[] = array(
                     'full_name' => $full_name,
                     'address' => $address,
                     'phone' => $phone,
                     'email' => $email,
+                    'kananame' => $kananame,
                 );
             }
             //dd($rando_users);
