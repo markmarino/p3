@@ -16,7 +16,7 @@ Use \Debugbar;
 
 class RandoController extends Controller
 {
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         return view('rando.index'); // view is in /p3/resources/views/rando/index.blade.php
     }
@@ -43,6 +43,10 @@ class RandoController extends Controller
         // fire off the validator
         $validator = Validator::make($input, $rules, $messages);
 
+        // flash the current input to the session so that it is available during the user's next request to the application
+        // this will allow the form data to be displayed as it was by via blade e.g. {{ old('num_rnd_users') }}
+        $request->flash();
+
         // if validation passes, process the form input
         if($validator->passes()) {
             // grab the $request object which contains all the form data
@@ -57,6 +61,7 @@ class RandoController extends Controller
             } else {
                 $faker = FakerFactory::create();
             }
+
 
             //Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
             //Debugbar::addMessage('Faker Real Text:', $faker->realText(500));

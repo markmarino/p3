@@ -31,7 +31,7 @@ such as a page specific stylesheets.
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
                 <label for="num_rnd_users">Number of Random Users</label>
-                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ $input['num_rnd_users'] or old('num_rnd_users') }}'>
+                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ old('num_rnd_users') }}'>
             </div>
             @if(count($errors) > 0)
                 <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p></div>
