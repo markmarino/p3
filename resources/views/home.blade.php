@@ -27,7 +27,23 @@ such as a page specific stylesheets.
 
 @section('content')
     <div class="container">
-        <h1>Pick Your Poison:</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">What's all this then?</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Lorem Ipsum Generator</dt>
+                    <dd>This tool can be used to generate placeholder lorem ipsum text that you can use in your projects when need bulk amounts of text. The tool allows you to specify how many paragraphs your need.</dd>
+                    <dt>Random User Generator</dt>
+                    <dd>This tool can be used to generate a random list of users that you can use in your projects when need dummy user information to test with. The tool allows you to specify how many users your need and currently allows you to select two locales: United States and Japan.</dd>
+                </dl>
+            </div>
+        </div>
+
+        <h2>Pick Your Poison:</h2>
+
         <a href="/lorem"><img src="images/Lorem_Ipsum_Generator_Sm.png" title="Lorem Ipsum Generator" width="594" height="80" /></a>
         <a href="/rando"><img src="images/Random_User_Generator_Logo_Sm.png" title="Random User Generator" width="594" height="80" /></a>
     </div>

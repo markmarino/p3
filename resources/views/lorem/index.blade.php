@@ -29,20 +29,44 @@ such as a page specific stylesheets.
     <div class="container">
         <h1>Generate Ipsum Lorem Text</h1>
         <form method='POST' action='/lorem'>
+            <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
-                <input type='hidden' name='_token' value='{{csrf_token()}}'>
                 <label for="num_paragraphs">Number of Paragraphs</label>
-                <input type='text' class="form-control" id="num_paragraphs" name='num_paragraphs' value='{{old('num_paragraphs')}}'>
+                <input type='number' class="form-control" id="num_paragraphs" name='num_paragraphs' value='{{ old('num_paragraphs') }}'>
             </div>
             @if(count($errors) > 0)
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_paragraphs') }}</p></div>
             @endif
-            <button type="submit" class="btn btn-default">Generate</button>
+
+            <h3>Choose an option:</h3>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" name="lorem_style_option" id="lorem_style_option1" value="regular_lorem" @if(old('lorem_style_option')=='regular_lorem') checked @endif >
+                Regular Lorem Ipsum Style
+              </label>
+            </div>
+
+            <div class="radio-inline">
+              <label>
+                <input type="radio" name="lorem_style_option" id="lorem_style_option2" value="alice_in_wonderland" @if(old('lorem_style_option')=='alice_in_wonderland') checked @endif>
+                Alice in Wonderland Style
+              </label>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-block">Generate</button>
         </form>
+        <br><br><br>
+
+        @if(isset($lorem_paragraphs))
+            <div class="container">
+                <h1>Lorem Ipsum Generated Text</h1>
+                <div class="well well-lg">
+                    @foreach($lorem_paragraphs as $lorem_paragraph)
+                        <p>{{ $lorem_paragraph['lorem_text'] }}</p>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 @stop
 
