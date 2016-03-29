@@ -41,7 +41,7 @@ such as a page specific stylesheets.
             <h4>Choose an paragraph length:</h4>
 
               <label class="radio-inline">
-                <input type="radio" name="paragraph_length" id="paragraph_length1" value="short" @if(old('paragraph_length')=='short') checked @endif >
+                <input type="radio" name="paragraph_length" id="paragraph_length1" value="short" @if(old('paragraph_length')!='medium' && old('paragraph_length')!='long' ) checked @endif >
                 Short
               </label>
 
@@ -61,7 +61,7 @@ such as a page specific stylesheets.
 
             <h4>Choose a style:</h4>
               <label class="radio-inline">
-                <input type="radio" name="lorem_style_option" id="lorem_style_option1" value="regular_lorem" @if(old('lorem_style_option')=='regular_lorem') checked @endif >
+                <input type="radio" name="lorem_style_option" id="lorem_style_option1" value="regular_lorem" @if(old('lorem_style_option')!='alice_in_wonderland') checked @endif >
                 Regular Lorem Ipsum Style
               </label>
 

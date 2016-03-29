@@ -39,7 +39,7 @@ such as a page specific stylesheets.
 
             <h3>Choose a country:</h3>
             <label class="radio-inline">
-                <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')=='united_states') checked @endif >United States
+                <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')!='japan') checked @endif >United States
             </label>
             <label class="radio-inline">
                 <input type="radio" name="country_option" id="country_option2" value="japan" @if(old('country_option')=='japan') checked @endif>Japan

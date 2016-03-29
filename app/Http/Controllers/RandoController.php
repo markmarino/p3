@@ -65,7 +65,6 @@ class RandoController extends Controller
                 $faker = FakerFactory::create();
             }
 
-
             //Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
             //Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
             /*

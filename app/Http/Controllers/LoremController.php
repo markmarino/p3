@@ -60,26 +60,37 @@ class LoremController extends Controller
             $data = $request->all();
             $num_paragraphs = $data['num_paragraphs'];
             $lorem_style = $data['lorem_style_option'];
+            $paragraph_length = $data['paragraph_length'];
             Debugbar::addMessage('$num_paragraphs:', $num_paragraphs);
             // dd($data);
 
             $faker = FakerFactory::create();
 
-            Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
-            Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
+            //Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
+            //Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
 
             $lorem_paragraphs = array();
 
+            if ($paragraph_length == 'short') {
+                $num_sentences = 6;
+                $num_characters = 300;
+            } else if ($paragraph_length == 'medium') {
+                $num_sentences = 12;
+                $num_characters = 600;
+            } else if ($paragraph_length == 'long') {
+                $num_sentences = 18;
+                $num_characters = 900;
+            }
+
             for ($i=0; $i < $num_paragraphs; $i++) {
                 if ($lorem_style == 'regular_lorem') {
-                    $paragraph = $faker->paragraph(1,true);
+                    $paragraph = $faker->paragraph($num_sentences,true);
                 } else if ($lorem_style == 'alice_in_wonderland') {
-                    $paragraph = $faker->realText(500);
+                    $paragraph = $faker->realText($num_characters);
                 }
 
                 $lorem_paragraphs[] = array(
                     'lorem_text' => $paragraph,
-                    'lorem_style' => $lorem_style,
                 );
             }
             //dd($lorem_paragraphs);
