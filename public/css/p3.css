@@ -21,3 +21,14 @@ body {
 .breadcrumb>.active {
     color: #4B4B7D;
 }
+
+.form-label {
+    margin: 5px 0px;
+    font-weight: bold;
+    margin: 15px 0px 5px 0px;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}

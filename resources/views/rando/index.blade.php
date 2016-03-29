@@ -27,17 +27,32 @@ such as a page specific stylesheets.
 @section('content')
     <div class="container">
         <h1>Generate Random Users:</h1>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Usage: This tool can be used to generate random users that you can use in your projects when you need dummy user info to populate your application.</div>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Number of Users:</dt>
+                    <dd>Specify the number of random users you want to generate. Acceptable range is from 1 to 1000.</dd>
+                    <dt>Locale:</dt>
+                    <dd>Choose which locale you want the users for. Currently United States and Japan are supported.</dd>
+                </dl>
+            </div>
+        </div>
+
         <form method='POST' action='/rando'>
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
-                <label for="num_rnd_users">Number of Random Users</label>
+                <label for="num_rnd_users">Number of Users:</label>
                 <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ old('num_rnd_users') }}' placeholder="Enter a number between 1 and 1000.">
             </div>
             @if($errors->has('num_rnd_users'))
                 <p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p>
             @endif
 
-            <h3>Choose a country:</h3>
+            <p class="form-label">Locale:</p>
             <label class="radio-inline">
                 <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')!='japan') checked @endif >United States
             </label>
