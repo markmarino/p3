@@ -1,27 +1,16 @@
-# Laravel PHP Framework
+# Mark Marino's Project 3: Developer's Best Friend
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Live URL
+<http://p3.markmarinorocks.me/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Description
+Developer's Best Friend is a Laravel-based web app comprised of two useful utilities for developers: a random user generator, and a lorem ipsum dummy text generator. The front-end look and feel is using the Bootstrap framework.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Demo
+Coming Soon!
 
-## Official Documentation
+## Details for teaching team
+I was greatly influenced on the execution for this project by Susan Buck's Shipper app demo video <https://docs.google.com/document/d/1GaJBiPdqaUYhtd2BKze4MJgL1Yn2nIG-HraHZRsmShA/edit>, which helped me conceptualize the big-picture for pulling the app together as well as ironing out a lot of the nuts and bolts of implementing this app using Laravel and the MVC model. Also a big thanks to Rebekah Heacock Jones for her help with getting my validation code working... the devil is in the details.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Outside code
+* Bootstrap: http://getbootstrap.com/
