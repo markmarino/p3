@@ -31,28 +31,24 @@ such as a page specific stylesheets.
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
                 <label for="num_rnd_users">Number of Random Users</label>
-                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ old('num_rnd_users') }}'>
+                <input type='number' class="form-control" id="num_rnd_users" name='num_rnd_users' value='{{ old('num_rnd_users') }}' placeholder="Enter a number between 1 and 1000.">
             </div>
-            @if(count($errors) > 0)
-                <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p></div>
+            @if($errors->has('num_rnd_users'))
+                <p><span class="label label-warning">Warning!</span> {{ $errors->first('num_rnd_users') }}</p>
             @endif
 
             <h3>Choose a country:</h3>
-            <div class="radio-inline">
-              <label>
-                <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')=='united_states') checked @endif >
-                United States
-              </label>
-            </div>
-
-            <div class="radio-inline">
-              <label>
-                <input type="radio" name="country_option" id="country_option2" value="japan" @if(old('country_option')=='japan') checked @endif>
-                Japan
-              </label>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Generate</button>
+            <label class="radio-inline">
+                <input type="radio" name="country_option" id="country_option1" value="united_states" @if(old('country_option')=='united_states') checked @endif >United States
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="country_option" id="country_option2" value="japan" @if(old('country_option')=='japan') checked @endif>Japan
+            </label>
+            @if($errors->has('country_option'))
+                <p><span class="label label-warning">Warning!</span> {{ $errors->first('country_option') }}</p>
+            @endif
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-block">Generate</button>
         </form>
         <br><br><br>
 

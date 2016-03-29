@@ -32,26 +32,48 @@ such as a page specific stylesheets.
             <input type='hidden' name='_token' value='{{csrf_token()}}'>
             <div class="form-group">
                 <label for="num_paragraphs">Number of Paragraphs</label>
-                <input type='number' class="form-control" id="num_paragraphs" name='num_paragraphs' value='{{ old('num_paragraphs') }}'>
+                <input type='number' class="form-control" id="num_paragraphs" name='num_paragraphs' value='{{ old('num_paragraphs') }}' placeholder="Enter a number between 1 and 100.">
             </div>
-            @if(count($errors) > 0)
-                <div class="well well-sm"><p><span class="label label-warning">Warning!</span> {{ $errors->first('num_paragraphs') }}</p></div>
+            @if($errors->has('num_paragraphs'))
+                <p><span class="label label-warning">Warning!</span> {{ $errors->first('num_paragraphs') }}</p>
             @endif
 
-            <h3>Choose an option:</h3>
-            <div class="radio-inline">
-              <label>
+            <h4>Choose an paragraph length:</h4>
+
+              <label class="radio-inline">
+                <input type="radio" name="paragraph_length" id="paragraph_length1" value="short" @if(old('paragraph_length')=='short') checked @endif >
+                Short
+              </label>
+
+              <label class="radio-inline">
+                <input type="radio" name="paragraph_length" id="paragraph_length2" value="medium" @if(old('paragraph_length')=='medium') checked @endif>
+                Medium
+              </label>
+
+              <label class="radio-inline">
+                <input type="radio" name="paragraph_length" id="paragraph_length3" value="long" @if(old('paragraph_length')=='long') checked @endif>
+                Long
+              </label>
+
+            @if($errors->has('paragraph_length'))
+                <p><span class="label label-warning">Warning!</span> {{ $errors->first('paragraph_length') }}</p>
+            @endif
+
+            <h4>Choose a style:</h4>
+              <label class="radio-inline">
                 <input type="radio" name="lorem_style_option" id="lorem_style_option1" value="regular_lorem" @if(old('lorem_style_option')=='regular_lorem') checked @endif >
                 Regular Lorem Ipsum Style
               </label>
-            </div>
 
-            <div class="radio-inline">
-              <label>
+              <label class="radio-inline">
                 <input type="radio" name="lorem_style_option" id="lorem_style_option2" value="alice_in_wonderland" @if(old('lorem_style_option')=='alice_in_wonderland') checked @endif>
                 Alice in Wonderland Style
               </label>
-            </div>
+
+            @if($errors->has('lorem_style_option'))
+                <p><span class="label label-warning">Warning!</span> {{ $errors->first('lorem_style_option') }}</p>
+            @endif
+
             <br><br>
             <button type="submit" class="btn btn-primary btn-block">Generate</button>
         </form>

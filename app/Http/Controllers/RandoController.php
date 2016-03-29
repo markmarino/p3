@@ -26,19 +26,22 @@ class RandoController extends Controller
         // set things up for validation via Validator
         // first set up the $input array with the form inputs
         $input = array(
-            'num_rnd_users' => Input::get( 'num_rnd_users' )
+            'num_rnd_users' => Input::get( 'num_rnd_users' ),
+            'country_option' => Input::get( 'country_option' ),
         );
         // second, define the custom error messages for each validation rule error
         $messages = array(
             'num_rnd_users.required' => 'Please specify the number of random users requested.',
             'num_rnd_users.numeric' => 'Please enter a number in the Number of Random Users field.',
             'num_rnd_users.min' => 'Sorry, you must specify at least 1 user to generate.',
-            'num_rnd_users.max' => 'Sorry, you can only generate up to maximum of 1000 users.'
+            'num_rnd_users.max' => 'Sorry, you can only generate up to maximum of 1000 users.',
+            'country_option.required' => 'Please specify the desired locale.',
         );
         // third, define the validation rules for each form input, see validation types here:
         // https://laravel.com/docs/5.1/validation#available-validation-rules
         $rules = array(
-            'num_rnd_users' => 'required|numeric|min:1|max:1000'
+            'num_rnd_users' => 'required|numeric|min:1|max:1000',
+            'country_option' => 'required|in:united_states,japan',
         );
         // fire off the validator
         $validator = Validator::make($input, $rules, $messages);

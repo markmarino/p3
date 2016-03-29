@@ -26,19 +26,26 @@ class LoremController extends Controller
         // set things up for validation via Validator
         // first set up the $input array with the form inputs
         $input = array(
-            'num_paragraphs' => Input::get( 'num_paragraphs' )
+            'num_paragraphs' => Input::get( 'num_paragraphs' ),
+            'paragraph_length' => Input::get( 'paragraph_length' ),
+            'lorem_style_option' => Input::get( 'lorem_style_option' ),
         );
         // second, define the custom error messages for each validation rule error
         $messages = array(
-            'num_paragraphs.required' => 'Please specify the number of paragraphs requested.',
+            'num_paragraphs.required' => 'Please specify the number of paragraphs desired.',
             'num_paragraphs.numeric' => 'Please enter numbers only.',
             'num_paragraphs.min' => 'Sorry, you must specify at least 1 paragraph to generate.',
-            'num_paragraphs.max' => 'Sorry, you can only generate up to maximum of 100 paragraphs.'
+            'num_paragraphs.max' => 'Sorry, you can only generate up to maximum of 100 paragraphs.',
+            'paragraph_length.required' => 'Please specify the desired length of the paragraphs.',
+            'lorem_style_option.required' => 'Please specify the desired style for the text.',
+
         );
         // third, define the validation rules for each form input, see validation types here:
         // https://laravel.com/docs/5.1/validation#available-validation-rules
         $rules = array(
-            'num_paragraphs' => 'required|numeric|min:1|max:100'
+            'num_paragraphs' => 'required|numeric|min:1|max:100',
+            'paragraph_length' => 'required|in:short,medium,long',
+            'lorem_style_option' => 'required|in:regular_lorem,alice_in_wonderland',
         );
         // fire off the validator
         $validator = Validator::make($input, $rules, $messages);
@@ -57,7 +64,6 @@ class LoremController extends Controller
             // dd($data);
 
             $faker = FakerFactory::create();
-
 
             Debugbar::addMessage('Faker Lorem:', $faker->paragraph(5,true));
             Debugbar::addMessage('Faker Real Text:', $faker->realText(500));
