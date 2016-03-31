@@ -44,8 +44,8 @@ such as a page specific stylesheets.
 
         <h2>Pick Your Poison:</h2>
 
-        <a href="/lorem"><img src="images/Lorem_Ipsum_Generator_Sm.png" title="Lorem Ipsum Generator" width="296" height="40" /></a>
-        <a href="/rando"><img src="images/Random_User_Generator_Logo_Sm.png" title="Random User Generator" width="296" height="40" /></a>
+        <a href="/lorem"><img src="images/Lorem_Ipsum_Generator_Sm.png" title="Lorem Ipsum Generator" width="296" height="40" alt='Lorem Ipsum Generator'/></a>
+        <a href="/rando"><img src="images/Random_User_Generator_Logo_Sm.png" title="Random User Generator" width="296" height="40" alt='Random User Generator'/></a>
     </div>
 @stop
 
